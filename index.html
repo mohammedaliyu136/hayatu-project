@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Operator Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjWE71lqxuSpVWmXnFrcbuuMoTnEn5keI&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+</head>
+<body>
+    <style>
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBjWE71lqxuSpVWmXnFrcbuuMoTnEn5keI",
+    authDomain: "incident-reporting-296516.firebaseapp.com",
+    databaseURL: "https://incident-reporting-296516.firebaseio.com",
+    projectId: "incident-reporting-296516",
+    storageBucket: "incident-reporting-296516.appspot.com",
+    messagingSenderId: "980747836311",
+    appId: "1:980747836311:web:c44c86dc1338a2921082d2",
+    measurementId: "G-K1W5HCHKY3"
+  };
+  // Initialize Firebase
+  fb=firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  //firebase.document.;//database().ref("incidents")
+</script>
+<style type="text/css">
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script>
+    function initMap(){
+      const myLatLng = { lat: 9.072264, lng: 7.491302 };
+      const myLatLng2 = { lat: -25.363, lng: 131.044 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: myLatLng,
+      });
+      /*
+      setTimeout(function(){ 
+        new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Hello World!",
+      });
+       }, 3000);
+     
+       setTimeout(function(){ 
+        new google.maps.Marker({
+        position: myLatLng2,
+        map,
+        title: "Hello World!",
+      });
+       }, 6000);
+       */
+        hhh4(map);
+        map.addListener('click', function(e) {
+                let lat = e.latLng.lat();
+                let lng = e.latLng.lng();
+                console.log(e);
+        });
+    }
+  </script>
+</head>
+<body>
+  <div id="map"></div>
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Inprogress....</p>
+    </div>
+  
+  </div>
+  <script>
+      // When the user clicks anywhere outside of the modal, close it
+      var modal = document.getElementById("myModal");
+
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+  </script>
+</body>
+</html>
